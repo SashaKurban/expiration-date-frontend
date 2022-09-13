@@ -1,9 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  return (
-  );
-}
+  return(
+    <p>Hello</p>
+  )
+};
 
 export default App;
