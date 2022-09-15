@@ -5,6 +5,7 @@ import GroceryCard from './components/GroceryCard/GroceryCard.js';
 
 function App() {
   let [groceries, setGroceries] = useState();
+  let update = true;
 
   useEffect(() => {
     fetch('https://expiration-date-project.herokuapp.com/api/expirationDate')
@@ -13,13 +14,13 @@ function App() {
     })
     .then(data => {
       console.log(data);
+      setGroceries(data);
     })
-  });
-
+  }, [update]);
 
   return(
     <div>
-      <GroceryCard />;
+      {groceries && <GroceryCard groceries={groceries} />}
     </div>
   )
 };
