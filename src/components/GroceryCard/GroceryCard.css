@@ -1,14 +1,27 @@
-
-.grocery-card{
-    border: 2px solid black;
-    border-radius:5px;
-    padding:20px;
-    margin:20px;
+.grocery-item {
+  display: flex;
 }
-.days-left{
-    float:right;
-    display:flex;
-    flex-direction:column;
-    align-items: center;
-    padding: 0 30px;
+.grocery-card {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+  width: 70%;
+}
+.days-left {
+  float: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align:center;
+  padding: 0 30px;
+}
+.grocery-buttons {
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30px;
+  padding: 30px;
 }
