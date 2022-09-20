@@ -1,12 +1,9 @@
 import "./GroceryCard.css";
 import Button from "../Button/Button.js";
 
-export default function GroceryCard({ groceries }) {
+export default function GroceryCard({ groceries, deleteGrocery}) {
   function Update() {
     console.log("update");
-  }
-  function Delete() {
-    console.log("delete");
   }
 
   function checkExpire(daysLeft) {
@@ -19,15 +16,21 @@ export default function GroceryCard({ groceries }) {
     else return false;
   }
 
+  function sortByDaysLeft(data){
+    const copyData = [].concat(data)
+    .sort((a, b) => a.daysLeft > b.daysLeft? 1 : -1);
+    return copyData;
+  }
+
   return (
-    <div className="grocery-card-list">
-      {groceries.map((grocery) => (
-        <div key={grocery.id} className="grocery-item">
+    <div className="grocery-card-list" >
+      {sortByDaysLeft(groceries).map((grocery) => (
+        <div key={grocery.id} grocery-id={grocery.id} className="grocery-item">
           <div className="grocery-card">
             <h2 className="grocery-name">{grocery.name}</h2>
             <div className="days-left">
               {checkExpireToday(grocery.daysLeft) ? (
-                <h2> Expires Today</h2>
+                <h2> Last day</h2>
               ) : (
                 <>
                   {checkExpire(grocery.daysLeft) ? (
@@ -49,12 +52,12 @@ export default function GroceryCard({ groceries }) {
             <Button
               buttonName="Update"
               buttonClass="update-button"
-              handleClick={Update}
+              onClick={Update}
             />
             <Button
               buttonName="Delete"
               buttonClass="delete-button"
-              handleClick={Delete}
+              handleClick={() => deleteGrocery(grocery.id)}
             />
           </div>
         </div>
