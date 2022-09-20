@@ -1,13 +1,9 @@
 import "./GroceryCard.css";
 import Button from "../Button/Button.js";
 
-export default function GroceryCard({ groceries, deleteGrocery}) {
-  function Update() {
-    console.log("update");
-  }
-
+export default function GroceryCard({ groceries, deleteGrocery, showPopUp }) {
   function checkExpire(daysLeft) {
-    if (daysLeft < 0) return true; 
+    if (daysLeft < 0) return true;
     else return false;
   }
 
@@ -16,14 +12,15 @@ export default function GroceryCard({ groceries, deleteGrocery}) {
     else return false;
   }
 
-  function sortByDaysLeft(data){
-    const copyData = [].concat(data)
-    .sort((a, b) => a.daysLeft > b.daysLeft? 1 : -1);
+  function sortByDaysLeft(data) {
+    const copyData = []
+      .concat(data)
+      .sort((a, b) => (a.daysLeft > b.daysLeft ? 1 : -1));
     return copyData;
   }
 
   return (
-    <div className="grocery-card-list" >
+    <div className="grocery-card-list">
       {sortByDaysLeft(groceries).map((grocery) => (
         <div key={grocery.id} grocery-id={grocery.id} className="grocery-item">
           <div className="grocery-card">
@@ -52,7 +49,7 @@ export default function GroceryCard({ groceries, deleteGrocery}) {
             <Button
               buttonName="Update"
               buttonClass="update-button"
-              onClick={Update}
+              handleClick={() => showPopUp("update", grocery)}
             />
             <Button
               buttonName="Delete"
