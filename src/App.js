@@ -67,8 +67,8 @@ function App() {
       .then(() => {
         setUpdate(!update);
       })
-      .catch(() => {
-        console.log("Error while adding new item " + article.map);
+      .catch(error => {
+        console.log(error);
       });
   }
 
@@ -81,8 +81,8 @@ function App() {
       .then(() => {
         setUpdate(!update);
       })
-      .catch(() => {
-        console.log("Error while deleting item " + id);
+      .catch(error => {
+        console.log( error);
       });
   }
   //update data
@@ -108,11 +108,11 @@ function App() {
         `https://expiration-date-project.herokuapp.com/api/expirationDate/${id}`,
         article
       )
-      .then((res) => {
+      .then(() => {
         setUpdate(!update);
       })
-      .catch(() => {
-        console.log("Error while updating item " + id);
+      .catch(error => {
+        console.log(error);
       });
   }
 
