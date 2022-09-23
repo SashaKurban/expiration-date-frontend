@@ -1,5 +1,5 @@
 import "./InputForm.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function InputForm({ formType, functionCall, grocery }) {
   const [type, setType] = useState(grocery.type);
@@ -10,9 +10,30 @@ export default function InputForm({ formType, functionCall, grocery }) {
   const [daysToConsume, setDaysToConsume] = useState(grocery.daysToConsume);
   const [byDaysLeft, setByDaysLeft] = useState(true);
 
+  useEffect(() => {
+    if (byDaysLeft) {
+      setExpirationDate("yyyy-mm-dd");
+    } else setDaysToConsume(0);
+  }, [formType, byDaysLeft, daysToConsume, expirationDate]);
+
   return (
     <div className="pop-up">
-      <form className="pop-up-form">
+      <form
+        className="pop-up-form"
+        onSubmit={() =>
+          formType === "update"
+            ? functionCall(
+                grocery.id,
+                type,
+                name,
+                brand,
+                dateOpened,
+                daysToConsume,
+                expirationDate
+              )
+            : functionCall(type, name, brand, daysToConsume, expirationDate)
+        }
+      >
         <label>
           Type:
           <input

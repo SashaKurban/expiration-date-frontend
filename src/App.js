@@ -26,8 +26,6 @@ function App() {
 
   //show popup input form with grocery data fields
   async function showPopUp(formType, newGrocery) {
-    console.log(formType);
-
     if (formType === "add" || formType === "update" || formType === "close") {
       if (formType === "add") {
         setGrocery({
@@ -46,7 +44,7 @@ function App() {
 
   async function addGrocery(type, name, brand, daysToConsume, expirationDate) {
     let article;
-    if (expirationDate !== "yyyy/mm/dd") {
+    if (expirationDate === null || expirationDate !== "yyyy-mm-dd") {
       article = {
         type: type,
         name: name,
@@ -88,18 +86,33 @@ function App() {
       });
   }
   //update data
-  async function updateGrocery(id) {
-    const article = {};
+  async function updateGrocery(
+    id,
+    type,
+    name,
+    brand,
+    dateOpened,
+    daysToConsume,
+    expirationDate
+  ) {
+    const article = {
+      type: type,
+      name: name,
+      brand: brand,
+      dateOpened: dateOpened,
+      expirationDate: expirationDate,
+      daysToConsume: daysToConsume,
+    };
     axios
-      .post(
-        `https://expiration-date-project.herokuapp.com/api/expirationDate/`,
+      .put(
+        `https://expiration-date-project.herokuapp.com/api/expirationDate/${id}`,
         article
       )
       .then((res) => {
         setUpdate(!update);
       })
       .catch(() => {
-        console.log("Error while deleting item " + id);
+        console.log("Error while updating item " + id);
       });
   }
 
