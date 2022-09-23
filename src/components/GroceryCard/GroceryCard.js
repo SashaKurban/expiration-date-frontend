@@ -3,13 +3,11 @@ import Button from "../Button/Button.js";
 
 export default function GroceryCard({ groceries, deleteGrocery, showPopUp }) {
   function checkExpire(daysLeft) {
-    if (daysLeft < 0) return true;
-    else return false;
+    return daysLeft < 0;
   }
 
   function checkExpireToday(daysLeft) {
-    if (daysLeft === 0) return true;
-    else return false;
+    return daysLeft === 0;
   }
 
   function sortByDaysLeft(data) {

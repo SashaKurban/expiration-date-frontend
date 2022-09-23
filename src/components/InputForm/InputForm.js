@@ -1,16 +1,26 @@
 import "./InputForm.css";
 import React, { useState } from "react";
 
-export default function UpdateForm() {
-  const [name, setName] = useState("name");
-  const [brand, setBrand] = useState("brand");
-  const [expirationDate, setExpirationDate] = useState("yyyy/mm/dd");
-  const [dateOpened, setDateOpened] = useState("yyyy/mm/dd");
-  const [daysToConsume, setDaysToConsume] = useState(0);
+export default function InputForm({ formType, functionCall, grocery }) {
+  const [type, setType] = useState(grocery.type);
+  const [name, setName] = useState(grocery.name);
+  const [brand, setBrand] = useState(grocery.brand);
+  const [dateOpened, setDateOpened] = useState(grocery.dateOpened);
+  const [expirationDate, setExpirationDate] = useState(grocery.expirationDate);
+  const [daysToConsume, setDaysToConsume] = useState(grocery.daysToConsume);
+  const [byDaysLeft, setByDaysLeft] = useState(true);
 
   return (
     <div className="pop-up">
       <form className="pop-up-form">
+        <label>
+          Type:
+          <input
+            type="text"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+          />
+        </label>
         <label>
           Name:
           <input
@@ -19,6 +29,66 @@ export default function UpdateForm() {
             onChange={(e) => setName(e.target.value)}
           />
         </label>
+        <label>
+          Brand:
+          <input
+            type="text"
+            value={brand}
+            onChange={(e) => setBrand(e.target.value)}
+          />
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={byDaysLeft}
+            onChange={(e) => setByDaysLeft(true)}
+          />
+          Days Left
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={!byDaysLeft}
+            onChange={(e) => setByDaysLeft(false)}
+          />
+          Expiration Date
+        </label>
+        {byDaysLeft ? (
+          <label>
+            Days to Consume:
+            <input
+              type="text"
+              value={daysToConsume}
+              onChange={(e) => setDaysToConsume(e.target.value)}
+            />
+          </label>
+        ) : (
+          <></>
+        )}
+        {formType === "update" ? (
+          <label>
+            Date Opened:
+            <input
+              type="text"
+              value={dateOpened}
+              onChange={(e) => setDateOpened(e.target.value)}
+            />
+          </label>
+        ) : (
+          <></>
+        )}
+        {!byDaysLeft ? (
+          <label>
+            Expiration Date:
+            <input
+              type="text"
+              value={expirationDate}
+              onChange={(e) => setExpirationDate(e.target.value)}
+            />
+          </label>
+        ) : (
+          <></>
+        )}
         <input type="submit" value="Submit" />
       </form>
     </div>
