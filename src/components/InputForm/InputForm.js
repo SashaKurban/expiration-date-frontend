@@ -18,22 +18,7 @@ export default function InputForm({ formType, functionCall, grocery }) {
 
   return (
     <div className="pop-up">
-      <form
-        className="pop-up-form"
-        onSubmit={() =>
-          formType === "update"
-            ? functionCall(
-                grocery.id,
-                type,
-                name,
-                brand,
-                dateOpened,
-                daysToConsume,
-                expirationDate
-              )
-            : functionCall(type, name, brand, daysToConsume, expirationDate)
-        }
-      >
+      <form className="pop-up-form">
         <label>
           Type:
           <input
@@ -110,7 +95,23 @@ export default function InputForm({ formType, functionCall, grocery }) {
         ) : (
           <></>
         )}
-        <input type="submit" value="Submit" />
+        <input
+          type="button"
+          value="Submit"
+          onClick={() =>
+            formType === "update"
+              ? functionCall(
+                  grocery.id,
+                  type,
+                  name,
+                  brand,
+                  dateOpened,
+                  daysToConsume,
+                  expirationDate
+                )
+              : functionCall(type, name, brand, daysToConsume, expirationDate)
+          }
+        />
       </form>
     </div>
   );

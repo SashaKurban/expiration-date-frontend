@@ -67,7 +67,7 @@ function App() {
       .then(() => {
         setUpdate(!update);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -81,8 +81,8 @@ function App() {
       .then(() => {
         setUpdate(!update);
       })
-      .catch(error => {
-        console.log( error);
+      .catch((error) => {
+        console.log(error);
       });
   }
   //update data
@@ -111,7 +111,7 @@ function App() {
       .then(() => {
         setUpdate(!update);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
