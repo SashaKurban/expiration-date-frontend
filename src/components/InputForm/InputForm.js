@@ -1,7 +1,12 @@
 import "./InputForm.css";
 import React, { useEffect, useState } from "react";
 
-export default function InputForm({ formType, functionCall, grocery }) {
+export default function InputForm({
+  formType,
+  functionCall,
+  showPopUp,
+  grocery,
+}) {
   const [type, setType] = useState(grocery.type);
   const [name, setName] = useState(grocery.name);
   const [brand, setBrand] = useState(grocery.brand);
@@ -19,7 +24,14 @@ export default function InputForm({ formType, functionCall, grocery }) {
   return (
     <div className="pop-up">
       <form className="pop-up-form">
-        <label>
+        <div className="from-close">
+          <div className="close-cross" onClick={() => showPopUp("close")}>
+            <div className="line1"></div>
+            <div className="line2"></div>
+            <div className="line3"></div>
+          </div>
+        </div>
+        <label className="pop-up-input">
           Type:
           <input
             type="text"
@@ -27,7 +39,7 @@ export default function InputForm({ formType, functionCall, grocery }) {
             onChange={(e) => setType(e.target.value)}
           />
         </label>
-        <label>
+        <label className="pop-up-input">
           Name:
           <input
             type="text"
@@ -35,7 +47,7 @@ export default function InputForm({ formType, functionCall, grocery }) {
             onChange={(e) => setName(e.target.value)}
           />
         </label>
-        <label>
+        <label className="pop-up-input">
           Brand:
           <input
             type="text"
@@ -43,24 +55,26 @@ export default function InputForm({ formType, functionCall, grocery }) {
             onChange={(e) => setBrand(e.target.value)}
           />
         </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={byDaysLeft}
-            onChange={(e) => setByDaysLeft(true)}
-          />
-          Days Left
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={!byDaysLeft}
-            onChange={(e) => setByDaysLeft(false)}
-          />
-          Expiration Date
-        </label>
-        {byDaysLeft ? (
+        <div className="checkbox-section">
           <label>
+            <input
+              type="checkbox"
+              checked={byDaysLeft}
+              onChange={() => setByDaysLeft(true)}
+            />
+            Days Left
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={!byDaysLeft}
+              onChange={(e) => setByDaysLeft(false)}
+            />
+            Expiration Date
+          </label>
+        </div>
+        {byDaysLeft ? (
+          <label className="pop-up-input">
             Days to Consume:
             <input
               type="text"
@@ -72,7 +86,7 @@ export default function InputForm({ formType, functionCall, grocery }) {
           <></>
         )}
         {formType === "update" ? (
-          <label>
+          <label className="pop-up-input">
             Date Opened:
             <input
               type="text"
@@ -84,7 +98,7 @@ export default function InputForm({ formType, functionCall, grocery }) {
           <></>
         )}
         {!byDaysLeft ? (
-          <label>
+          <label className="pop-up-input">
             Expiration Date:
             <input
               type="text"

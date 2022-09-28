@@ -125,6 +125,7 @@ function App() {
         <InputForm
           formType={form}
           functionCall={form === "add" ? addGrocery : updateGrocery}
+          showPopUp={showPopUp}
           grocery={grocery}
         />
       ) : (

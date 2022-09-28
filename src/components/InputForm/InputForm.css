@@ -1,0 +1,51 @@
+.pop-up {
+  margin: 0 auto;
+  width: 40%;
+}
+
+.close-cross {
+  float: right;
+  cursor: pointer;
+}
+
+.line1,
+.line2,
+.line3 {
+  height: 2px;
+  width: 35px;
+  margin: 0.5rem 0;
+  background: #15616d;
+}
+
+.line1 {
+  transform: translate(-10px) rotate(45deg) translate(15px);
+}
+
+.line3 {
+  transform: translate(-10px) rotate(-45deg) translate(15px);
+}
+.line2 {
+  opacity: 0;
+}
+
+.pop-up-form {
+  display: flex;
+  flex-direction: column;
+}
+.pop-up-form label {
+  font-size: 25px;
+  padding: 0 10px 20px 10px;
+}
+.pop-up-form input {
+  font-size: 20px;
+  padding: 3px;
+  margin-top: 5px;
+}
+
+.pop-up-input {
+  display: flex;
+  flex-direction: column;
+}
+.checkbox-section input {
+  margin-right: 5px;
+}
