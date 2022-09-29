@@ -1,4 +1,5 @@
 import "./App.css";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./components/Header/Header.js";
@@ -10,6 +11,9 @@ function App() {
   const [update, setUpdate] = useState(false);
   const [form, setForm] = useState("close");
   const [grocery, setGrocery] = useState({});
+  const [noScroll, setNoScroll] = useState(false);
+
+  noScroll ? disableBodyScroll(document) : enableBodyScroll(document);
 
   //fetch and dispay data
   useEffect(() => {
@@ -38,11 +42,15 @@ function App() {
         setGrocery(newGrocery);
       }
       setForm(formType);
+      if (formType === "add" || formType === "update") {
+        setNoScroll(true);
+      } else setNoScroll(false);
     } else console.log("Invalid form type");
   }
 
   async function addGrocery(type, name, brand, daysToConsume, expirationDate) {
     setForm("close");
+    setNoScroll(false);
     let article;
     if (expirationDate === null || expirationDate !== "yyyy-mm-dd") {
       article = {
@@ -104,6 +112,7 @@ function App() {
       daysToConsume: daysToConsume,
     };
     setForm("close");
+    setNoScroll(false);
     axios
       .put(
         `https://expiration-date-project.herokuapp.com/api/expirationDate/${id}`,
@@ -118,10 +127,11 @@ function App() {
   }
 
   return (
-    <div>
+    <body>
       <header>
         <Header showPopUp={showPopUp} />
       </header>
+
       {form !== "close" ? (
         <InputForm
           formType={form}
@@ -139,7 +149,7 @@ function App() {
           showPopUp={showPopUp}
         />
       )}
-    </div>
+    </body>
   );
 }
 
