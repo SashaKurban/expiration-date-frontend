@@ -16,6 +16,21 @@ export default function InputForm({
   const [daysToConsume, setDaysToConsume] = useState(grocery.daysToConsume);
   const [byDaysLeft, setByDaysLeft] = useState(true);
 
+  const options = [
+    { label: "other", value: "other" },
+    { label: "leftover", value: "leftover" },
+    { label: "produce", value: "produce" },
+    { label: "meat", value: "meat" },
+    { label: "fish", value: "fish" },
+    { label: "dairy", value: "dairy" },
+    { label: "grain", value: "grain" },
+    { label: "condiment", value: "condiment" },
+    { label: "jar/can", value: "jar/can" },
+    { label: "snack", value: "snack" },
+    { label: "drink", value: "drink" },
+    { label: "frozen", value: "frozen" },
+  ];
+
   useEffect(() => {
     if (byDaysLeft) {
       setExpirationDate("yyyy-mm-dd");
@@ -34,11 +49,11 @@ export default function InputForm({
         </div>
         <label className="pop-up-input">
           Type:
-          <input
-            type="text"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-          />
+          <select value={type} onChange={(e) => setType(e.target.value)}>
+            {options.map((option) => (
+              <option value={option.value}>{option.label}</option>
+            ))}
+          </select>
         </label>
         <label className="pop-up-input">
           Name:
