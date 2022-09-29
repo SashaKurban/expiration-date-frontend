@@ -56,3 +56,24 @@
     padding: 20px 0;
   }
 }
+@media screen and (max-width: 650px) {
+  .grocery-item {
+    display: block;
+    margin: 10px auto;
+    justify-content: center;
+    padding: 10px;
+  }
+  .grocery-buttons {
+    float: none;
+    flex-direction: row;
+    margin: 0;
+    padding: 10px;
+  }
+  .groecery-card {
+    width: 100%;
+  }
+  .grocery-card-list {
+    margin: 0 auto;
+    width: 85%;
+  }
+}
