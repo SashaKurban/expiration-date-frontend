@@ -45,7 +45,8 @@
   font-size: 25px;
   padding: 0 10px 20px 10px;
 }
-.pop-up-form input {
+.pop-up-form input,
+.pop-up-form select {
   font-size: 20px;
   padding: 3px;
   margin-top: 5px;
