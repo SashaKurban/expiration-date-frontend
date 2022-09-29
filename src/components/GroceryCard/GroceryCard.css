@@ -2,19 +2,28 @@
   display: flex;
 }
 .grocery-card {
+  display: flex;
+  justify-content: space-evenly;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   padding: 20px;
   margin: 20px;
   width: 70%;
 }
+
+.icon {
+  font-size: 70px;
+  padding: 20px 100px 0 0;
+}
+
 .days-left {
   float: right;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 30px;
+  width: 200px;
+  padding: 30px 0 0 100px;
 }
 .grocery-buttons {
   float: right;

@@ -1,5 +1,18 @@
 import "./GroceryCard.css";
 import Button from "../Button/Button.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFish } from "@fortawesome/free-solid-svg-icons";
+import { faDrumstickBite } from "@fortawesome/free-solid-svg-icons";
+import { faJar } from "@fortawesome/free-solid-svg-icons";
+import { faCarrot } from "@fortawesome/free-solid-svg-icons";
+import { faAppleWhole } from "@fortawesome/free-solid-svg-icons";
+import { faBottleDroplet } from "@fortawesome/free-solid-svg-icons";
+import { faWheatAwn } from "@fortawesome/free-solid-svg-icons";
+import { faCheese } from "@fortawesome/free-solid-svg-icons";
+import { faCookie } from "@fortawesome/free-solid-svg-icons";
+import { faBowlFood } from "@fortawesome/free-solid-svg-icons";
+import { faWineBottle } from "@fortawesome/free-solid-svg-icons";
+import { faCloudMeatball } from "@fortawesome/free-solid-svg-icons";
 
 export default function GroceryCard({ groceries, deleteGrocery, showPopUp }) {
   function checkExpire(daysLeft) {
@@ -22,7 +35,15 @@ export default function GroceryCard({ groceries, deleteGrocery, showPopUp }) {
       {sortByDaysLeft(groceries).map((grocery) => (
         <div key={grocery.id} grocery-id={grocery.id} className="grocery-item">
           <div className="grocery-card">
-            <h2 className="grocery-name">{grocery.name}</h2>
+            <FontAwesomeIcon icon={faFish} className="icon" />
+            <div className="grocery-card-inner">
+              <h2 className="grocery-name">{grocery.name}</h2>
+              <p className="grocery-brand">"{grocery.brand}"</p>
+              <p className="dateOpened">opened: {grocery.dateOpened}</p>
+              <p className="expirationDate">
+                expires: {grocery.expirationDate}
+              </p>
+            </div>
             <div className="days-left">
               {checkExpireToday(grocery.daysLeft) ? (
                 <h2> Last day</h2>
@@ -39,9 +60,6 @@ export default function GroceryCard({ groceries, deleteGrocery, showPopUp }) {
                 </>
               )}
             </div>
-            <p className="grocery-brand">"{grocery.brand}"</p>
-            <p className="dateOpened">opened: {grocery.dateOpened}</p>
-            <p className="expirationDate">expires: {grocery.expirationDate}</p>
           </div>
           <div className="grocery-buttons">
             <Button
