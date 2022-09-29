@@ -1,5 +1,6 @@
 import "./InputForm.css";
 import React, { useEffect, useState } from "react";
+import Button from "../Button/Button.js";
 
 export default function InputForm({
   formType,
@@ -68,7 +69,7 @@ export default function InputForm({
             <input
               type="checkbox"
               checked={!byDaysLeft}
-              onChange={(e) => setByDaysLeft(false)}
+              onChange={() => setByDaysLeft(false)}
             />
             Expiration Date
           </label>
@@ -80,18 +81,6 @@ export default function InputForm({
               type="text"
               value={daysToConsume}
               onChange={(e) => setDaysToConsume(e.target.value)}
-            />
-          </label>
-        ) : (
-          <></>
-        )}
-        {formType === "update" ? (
-          <label className="pop-up-input">
-            Date Opened:
-            <input
-              type="text"
-              value={dateOpened}
-              onChange={(e) => setDateOpened(e.target.value)}
             />
           </label>
         ) : (
@@ -109,23 +98,39 @@ export default function InputForm({
         ) : (
           <></>
         )}
-        <input
-          type="button"
-          value="Submit"
-          onClick={() =>
-            formType === "update"
-              ? functionCall(
-                  grocery.id,
-                  type,
-                  name,
-                  brand,
-                  dateOpened,
-                  daysToConsume,
-                  expirationDate
-                )
-              : functionCall(type, name, brand, daysToConsume, expirationDate)
-          }
-        />
+        {formType === "update" ? (
+          <label className="pop-up-input">
+            Date Opened:
+            <input
+              type="text"
+              value={dateOpened}
+              onChange={(e) => setDateOpened(e.target.value)}
+            />
+          </label>
+        ) : (
+          <></>
+        )}
+        <div className="submit-btn-section">
+          <Button
+            buttonName="Submit"
+            buttonClass="submit-button"
+            type="button"
+            value="Submit"
+            handleClick={() =>
+              formType === "update"
+                ? functionCall(
+                    grocery.id,
+                    type,
+                    name,
+                    brand,
+                    dateOpened,
+                    daysToConsume,
+                    expirationDate
+                  )
+                : functionCall(type, name, brand, daysToConsume, expirationDate)
+            }
+          />
+        </div>
       </form>
     </div>
   );

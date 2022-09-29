@@ -2,7 +2,6 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./components/Header/Header.js";
-import Button from "./components/Button/Button.js";
 import GroceryCard from "./components/GroceryCard/GroceryCard.js";
 import InputForm from "./components/InputForm/InputForm.js";
 
@@ -43,6 +42,7 @@ function App() {
   }
 
   async function addGrocery(type, name, brand, daysToConsume, expirationDate) {
+    setForm("close");
     let article;
     if (expirationDate === null || expirationDate !== "yyyy-mm-dd") {
       article = {
@@ -103,6 +103,7 @@ function App() {
       expirationDate: expirationDate,
       daysToConsume: daysToConsume,
     };
+    setForm("close");
     axios
       .put(
         `https://expiration-date-project.herokuapp.com/api/expirationDate/${id}`,
@@ -119,7 +120,7 @@ function App() {
   return (
     <div>
       <header>
-        <Header />
+        <Header showPopUp={showPopUp} />
       </header>
       {form !== "close" ? (
         <InputForm
@@ -131,11 +132,6 @@ function App() {
       ) : (
         <></>
       )}
-      <Button
-        buttonName="Add"
-        buttonClass="addButton"
-        handleClick={() => showPopUp("add")}
-      />
       {groceries && (
         <GroceryCard
           groceries={groceries}

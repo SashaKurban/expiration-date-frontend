@@ -1,6 +1,6 @@
 .pop-up {
   margin: 0 auto;
-  width: 40%;
+  width: 60%;
 }
 
 .close-cross {
@@ -31,6 +31,10 @@
 .pop-up-form {
   display: flex;
   flex-direction: column;
+  padding: 25px;
+  margin: 20px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
 }
 .pop-up-form label {
   font-size: 25px;
@@ -48,4 +52,8 @@
 }
 .checkbox-section input {
   margin-right: 5px;
+}
+
+.submit-btn-section {
+  margin: 0 auto;
 }
