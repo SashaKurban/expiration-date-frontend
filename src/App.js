@@ -3,8 +3,9 @@ import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./components/Header/Header.js";
-import GroceryCard from "./components/GroceryCard/GroceryCard.js";
 import InputForm from "./components/InputForm/InputForm.js";
+import GroceryList from "./components/GroceryList/GroceryList";
+import FilterInput from "./components/FilterInput/FilterInput";
 
 function App() {
   const [groceries, setGroceries] = useState();
@@ -12,6 +13,8 @@ function App() {
   const [form, setForm] = useState("close");
   const [grocery, setGrocery] = useState({});
   const [noScroll, setNoScroll] = useState(false);
+  const [filter, setFilter] = useState("none");
+  const [order, setOrder] = useState("increasing");
 
   noScroll ? disableBodyScroll(document) : enableBodyScroll(document);
 
@@ -131,7 +134,12 @@ function App() {
       <header>
         <Header showPopUp={showPopUp} />
       </header>
-
+      <FilterInput
+        filter={filter}
+        order={order}
+        setFilter={setFilter}
+        setOrder={setOrder}
+      />
       {form !== "close" ? (
         <InputForm
           formType={form}
@@ -143,8 +151,10 @@ function App() {
         <></>
       )}
       {groceries && (
-        <GroceryCard
-          groceries={groceries}
+        <GroceryList
+          data={groceries}
+          filter={filter}
+          order={order}
           deleteGrocery={deleteGrocery}
           showPopUp={showPopUp}
         />

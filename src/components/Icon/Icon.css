@@ -1,7 +1,20 @@
 .icon {
   font-size: 70px;
   padding: 20px 100px 0 0;
-  color: #5f0f40;
+  color: #adc178;
+}
+.update,
+.delete {
+  font-size: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+.delete {
+  color: #ae2012;
+}
+.update {
+  color: #588157;
 }
 
 .fish {
@@ -42,5 +55,10 @@
   .icon {
     font-size: 100px;
     padding: 20px 0;
+  }
+  .update,
+  .delete {
+    padding: 0;
+    margin: 0;
   }
 }

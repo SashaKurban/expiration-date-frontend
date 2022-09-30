@@ -1,6 +1,6 @@
 import "./GroceryCard.css";
 import Button from "../Button/Button.js";
-import FoodIcon from "../Food Icon/FoodIcon.js";
+import Icon from "../Icon/Icon.js";
 
 export default function GroceryCard({ groceries, deleteGrocery, showPopUp }) {
   function checkExpire(daysLeft) {
@@ -11,19 +11,12 @@ export default function GroceryCard({ groceries, deleteGrocery, showPopUp }) {
     return daysLeft === 0;
   }
 
-  function sortByDaysLeft(data) {
-    const copyData = []
-      .concat(data)
-      .sort((a, b) => (a.daysLeft > b.daysLeft ? 1 : -1));
-    return copyData;
-  }
-
   return (
     <div className="grocery-card-list">
-      {sortByDaysLeft(groceries).map((grocery) => (
+      {groceries.map((grocery) => (
         <div key={grocery.id} grocery-id={grocery.id} className="grocery-item">
           <div className="grocery-card">
-            <FoodIcon type={grocery.type} />
+            <Icon type={grocery.type} />
             <div className="grocery-card-inner">
               <h2 className="grocery-name">{grocery.name}</h2>
               <p className="grocery-brand">"{grocery.brand}"</p>
@@ -50,14 +43,12 @@ export default function GroceryCard({ groceries, deleteGrocery, showPopUp }) {
             </div>
           </div>
           <div className="grocery-buttons">
-            <Button
-              buttonName="Update"
-              buttonClass="update-button"
+            <Icon
+              type={"update"}
               handleClick={() => showPopUp("update", grocery)}
             />
-            <Button
-              buttonName="Delete"
-              buttonClass="delete-button"
+            <Icon
+              type={"delete"}
               handleClick={() => deleteGrocery(grocery.id)}
             />
           </div>
