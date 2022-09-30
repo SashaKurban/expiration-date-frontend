@@ -1,0 +1,46 @@
+.icon {
+  font-size: 70px;
+  padding: 20px 100px 0 0;
+  color: #5f0f40;
+}
+
+.fish {
+  color: #005f73;
+}
+.meat {
+  color: #6c584c;
+}
+.condiment {
+  color: #9b2226;
+}
+.leftover {
+  color: #be95c4;
+}
+.drink {
+  color: #540b0e;
+}
+.grain {
+  color: #e9d8a6;
+}
+.produce {
+  color: #588157;
+}
+.jar-can {
+  color: #ae2012;
+}
+.snack {
+  color: #ca6702;
+}
+.dairy {
+  color: #ee9b00;
+}
+.frozen {
+  color: #0a9396;
+}
+
+@media screen and (max-width: 950px) {
+  .icon {
+    font-size: 100px;
+    padding: 20px 0;
+  }
+}

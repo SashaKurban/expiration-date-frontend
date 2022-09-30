@@ -25,7 +25,7 @@ export default function InputForm({
     { label: "dairy", value: "dairy" },
     { label: "grain", value: "grain" },
     { label: "condiment", value: "condiment" },
-    { label: "jar/can", value: "jar/can" },
+    { label: "jar-can", value: "jar-can" },
     { label: "snack", value: "snack" },
     { label: "drink", value: "drink" },
     { label: "frozen", value: "frozen" },

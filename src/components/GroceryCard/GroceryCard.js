@@ -1,19 +1,6 @@
 import "./GroceryCard.css";
 import Button from "../Button/Button.js";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFish } from "@fortawesome/free-solid-svg-icons";
-import { faDrumstickBite } from "@fortawesome/free-solid-svg-icons";
-import { faJar } from "@fortawesome/free-solid-svg-icons";
-import { faCarrot } from "@fortawesome/free-solid-svg-icons";
-import { faAppleWhole } from "@fortawesome/free-solid-svg-icons";
-import { faBottleDroplet } from "@fortawesome/free-solid-svg-icons";
-import { faWheatAwn } from "@fortawesome/free-solid-svg-icons";
-import { faCheese } from "@fortawesome/free-solid-svg-icons";
-import { faCookie } from "@fortawesome/free-solid-svg-icons";
-import { faBowlFood } from "@fortawesome/free-solid-svg-icons";
-import { faWineBottle } from "@fortawesome/free-solid-svg-icons";
-import { faCloudMeatball } from "@fortawesome/free-solid-svg-icons";
-import { faPizzaSlice } from "@fortawesome/free-solid-svg-icons";
+import FoodIcon from "../Food Icon/FoodIcon.js";
 
 export default function GroceryCard({ groceries, deleteGrocery, showPopUp }) {
   function checkExpire(daysLeft) {
@@ -31,27 +18,12 @@ export default function GroceryCard({ groceries, deleteGrocery, showPopUp }) {
     return copyData;
   }
 
-  function iconType(type) {
-    if (type === "meat") return faDrumstickBite;
-    else if (type === "fish") return faFish;
-    else if (type === "grain") return faWheatAwn;
-    else if (type === "snack") return faCookie;
-    else if (type === "jar/can") return faJar;
-    else if (type === "dairy") return faCheese;
-    else if (type === "condiment") return faBottleDroplet;
-    else if (type === "produce") return faAppleWhole;
-    else if (type === "leftover") return faBowlFood;
-    else if (type === "drink") return faWineBottle;
-    else if (type === "frozen") return faCloudMeatball;
-    else return faPizzaSlice;
-  }
-
   return (
     <div className="grocery-card-list">
       {sortByDaysLeft(groceries).map((grocery) => (
         <div key={grocery.id} grocery-id={grocery.id} className="grocery-item">
           <div className="grocery-card">
-            <FontAwesomeIcon icon={iconType(grocery.type)} className="icon" />
+            <FoodIcon type={grocery.type} />
             <div className="grocery-card-inner">
               <h2 className="grocery-name">{grocery.name}</h2>
               <p className="grocery-brand">"{grocery.brand}"</p>
