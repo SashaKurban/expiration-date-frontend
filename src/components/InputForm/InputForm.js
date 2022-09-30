@@ -38,115 +38,132 @@ export default function InputForm({
   }, [formType, byDaysLeft, daysToConsume, expirationDate]);
 
   return (
-    <div className="pop-up">
-      <form className="pop-up-form">
-        <div className="from-close">
-          <div className="close-cross" onClick={() => showPopUp("close")}>
-            <div className="line1"></div>
-            <div className="line2"></div>
-            <div className="line3"></div>
+    <div>
+      <div className="overlay"></div>
+      <div className="pop-up">
+        <form className="pop-up-form">
+          <div className="from-close">
+            <div className="close-cross" onClick={() => showPopUp("close")}>
+              <div className="line1"></div>
+              <div className="line2"></div>
+              <div className="line3"></div>
+            </div>
           </div>
-        </div>
-        <label className="pop-up-input">
-          Type:
-          <select value={type} onChange={(e) => setType(e.target.value)}>
-            {options.map((option) => (
-              <option value={option.value}>{option.label}</option>
-            ))}
-          </select>
-        </label>
-        <label className="pop-up-input">
-          Name:
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <label className="pop-up-input">
-          Brand:
-          <input
-            type="text"
-            value={brand}
-            onChange={(e) => setBrand(e.target.value)}
-          />
-        </label>
-        <div className="checkbox-section">
-          <label>
-            <input
-              type="checkbox"
-              checked={byDaysLeft}
-              onChange={() => setByDaysLeft(true)}
+          <div className="form-cols-inputs">
+            <div className="form-col">
+              <label className="pop-up-input">
+                Type:
+                <select value={type} onChange={(e) => setType(e.target.value)}>
+                  {options.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="pop-up-input">
+                Name:
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </label>
+              <label className="pop-up-input">
+                Brand:
+                <input
+                  type="text"
+                  value={brand}
+                  onChange={(e) => setBrand(e.target.value)}
+                />
+              </label>
+            </div>
+            <div className="form-col">
+              <div className="checkbox-section">
+                <label className="checkbox">
+                  <input
+                    type="checkbox"
+                    checked={byDaysLeft}
+                    onChange={() => setByDaysLeft(true)}
+                  />
+                  Days Left
+                </label>
+                <label className="checkbox">
+                  <input
+                    type="checkbox"
+                    checked={!byDaysLeft}
+                    onChange={() => setByDaysLeft(false)}
+                  />
+                  Expiration
+                </label>
+              </div>
+              {byDaysLeft ? (
+                <label className="pop-up-input">
+                  Days Left:
+                  <input
+                    type="text"
+                    value={daysToConsume}
+                    onChange={(e) => setDaysToConsume(e.target.value)}
+                  />
+                </label>
+              ) : (
+                <></>
+              )}
+              {!byDaysLeft ? (
+                <label className="pop-up-input">
+                  Expiration Date:
+                  <input
+                    type="text"
+                    value={expirationDate}
+                    onChange={(e) => setExpirationDate(e.target.value)}
+                  />
+                </label>
+              ) : (
+                <></>
+              )}
+              {formType === "update" ? (
+                <label className="pop-up-input">
+                  Date Opened:
+                  <input
+                    type="text"
+                    value={dateOpened}
+                    onChange={(e) => setDateOpened(e.target.value)}
+                  />
+                </label>
+              ) : (
+                <></>
+              )}
+            </div>
+          </div>
+          <div className="submit-btn-section">
+            <Button
+              buttonName="Submit"
+              buttonClass="submit-button"
+              type="button"
+              value="Submit"
+              handleClick={() =>
+                formType === "update"
+                  ? functionCall(
+                      grocery.id,
+                      type,
+                      name,
+                      brand,
+                      dateOpened,
+                      daysToConsume,
+                      expirationDate
+                    )
+                  : functionCall(
+                      type,
+                      name,
+                      brand,
+                      daysToConsume,
+                      expirationDate
+                    )
+              }
             />
-            Days Left
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={!byDaysLeft}
-              onChange={() => setByDaysLeft(false)}
-            />
-            Expiration Date
-          </label>
-        </div>
-        {byDaysLeft ? (
-          <label className="pop-up-input">
-            Days to Consume:
-            <input
-              type="text"
-              value={daysToConsume}
-              onChange={(e) => setDaysToConsume(e.target.value)}
-            />
-          </label>
-        ) : (
-          <></>
-        )}
-        {!byDaysLeft ? (
-          <label className="pop-up-input">
-            Expiration Date:
-            <input
-              type="text"
-              value={expirationDate}
-              onChange={(e) => setExpirationDate(e.target.value)}
-            />
-          </label>
-        ) : (
-          <></>
-        )}
-        {formType === "update" ? (
-          <label className="pop-up-input">
-            Date Opened:
-            <input
-              type="text"
-              value={dateOpened}
-              onChange={(e) => setDateOpened(e.target.value)}
-            />
-          </label>
-        ) : (
-          <></>
-        )}
-        <div className="submit-btn-section">
-          <Button
-            buttonName="Submit"
-            buttonClass="submit-button"
-            type="button"
-            value="Submit"
-            handleClick={() =>
-              formType === "update"
-                ? functionCall(
-                    grocery.id,
-                    type,
-                    name,
-                    brand,
-                    dateOpened,
-                    daysToConsume,
-                    expirationDate
-                  )
-                : functionCall(type, name, brand, daysToConsume, expirationDate)
-            }
-          />
-        </div>
-      </form>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

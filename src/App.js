@@ -127,7 +127,7 @@ function App() {
   }
 
   return (
-    <body>
+    <div>
       <header>
         <Header showPopUp={showPopUp} />
       </header>
@@ -149,7 +149,7 @@ function App() {
           showPopUp={showPopUp}
         />
       )}
-    </body>
+    </div>
   );
 }
 
