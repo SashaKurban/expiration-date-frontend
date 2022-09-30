@@ -6,7 +6,7 @@
 .update,
 .delete {
   font-size: 40px;
-  padding: 0;
+  padding: 15px;
   margin: 0;
 }
 
@@ -55,10 +55,5 @@
   .icon {
     font-size: 100px;
     padding: 20px 0;
-  }
-  .update,
-  .delete {
-    padding: 0;
-    margin: 0;
   }
 }

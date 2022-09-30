@@ -18,6 +18,7 @@ a:active {
 
 h1 {
   font-size: 44px;
+  text-shadow: 2px 2px black;
 }
 
 h2 {

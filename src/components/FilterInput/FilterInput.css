@@ -1,0 +1,42 @@
+.filter-input {
+  display: flex;
+  justify-content: start;
+  padding: 20px;
+}
+.filter-col {
+  width: 40%;
+  padding: 0 50px 0 5px;
+}
+.order-col {
+  width: 35%;
+}
+.checkbox-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkbox {
+  padding: 10px;
+}
+
+@media screen and (max-width: 650px) {
+  .filter-input {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  .filter-col {
+    width: 35%;
+    padding: 0 50px 0 5px;
+  }
+  .filter-col,
+  .order-col {
+    text-align: center;
+  }
+  .checkbox-section {
+    padding-left: 30px;
+  }
+  .checkbox {
+    padding: 5px;
+  }
+}

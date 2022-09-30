@@ -12,11 +12,6 @@ export default function Header({ showPopUp }) {
             buttonClass="add-button"
             handleClick={() => showPopUp("add")}
           />
-          <Button
-            buttonName="Filter"
-            buttonClass="add-button"
-            handleClick={() => showPopUp("add")}
-          />
         </div>
       </div>
     </div>

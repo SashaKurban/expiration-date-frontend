@@ -36,7 +36,11 @@ export default function FoodIcon({ type, handleClick }) {
   }
 
   return (
-    <div className="icon">
+    <div
+      className={
+        type === "update" ? "update" : type === "delete" ? "delete" : "icon"
+      }
+    >
       <FontAwesomeIcon
         icon={iconType(type)}
         className={type}

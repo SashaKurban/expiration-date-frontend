@@ -1,5 +1,4 @@
 import "./FilterInput.css";
-import React, { useEffect, useState } from "react";
 
 export default function FilterInput({ order, filter, setFilter, setOrder }) {
   const options = [
@@ -7,10 +6,10 @@ export default function FilterInput({ order, filter, setFilter, setOrder }) {
     { label: "leftover", value: "leftover" },
     { label: "produce", value: "produce" },
     { label: "meat", value: "meat" },
+    { label: "condiment", value: "condiment" },
     { label: "fish", value: "fish" },
     { label: "dairy", value: "dairy" },
     { label: "grain", value: "grain" },
-    { label: "condiment", value: "condiment" },
     { label: "jar-can", value: "jar-can" },
     { label: "snack", value: "snack" },
     { label: "drink", value: "drink" },
@@ -19,12 +18,12 @@ export default function FilterInput({ order, filter, setFilter, setOrder }) {
   const orders = [
     { label: "expiring soon", value: "increasing" },
     { label: "expiring last", value: "decreasing" },
-    { label: "recently opened", value: "recently-opened" },
+    { label: "open date", value: "recently-opened" },
   ];
 
   return (
     <div className="filter-input">
-      <div className="filter-row">
+      <div className="filter-col">
         <h2>Filter</h2>
         <div className="checkbox-section">
           {options.map((option) => (
@@ -40,7 +39,7 @@ export default function FilterInput({ order, filter, setFilter, setOrder }) {
           ))}
         </div>
       </div>
-      <div className="filter-row">
+      <div className="order-col">
         <h2>Order</h2>
         <div className="checkbox-section">
           {orders.map((option) => (
