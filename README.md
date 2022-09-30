@@ -1,3 +1,5 @@
+![Screen Shot 2022-09-30 at 4 49 17 PM](https://user-images.githubusercontent.com/64791611/193364153-2947e63b-2706-46dd-a86c-ee261c1c9505.png)
+
 # Expiration Date frontend
 
 React webapp that allows user to save groceries with their expiration dates to database, retrieve and update them, and reorganize/filter data by food type, expiration date and more. 
