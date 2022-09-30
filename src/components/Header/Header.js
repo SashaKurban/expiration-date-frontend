@@ -6,11 +6,18 @@ export default function Header({ showPopUp }) {
     <div className="header">
       <div className="nav-items">
         <h1 className="title">Expiration Date</h1>
-        <Button
-          buttonName="Add"
-          buttonClass="add-button"
-          handleClick={() => showPopUp("add")}
-        />
+        <div className="nav-btns">
+          <Button
+            buttonName="Add"
+            buttonClass="add-button"
+            handleClick={() => showPopUp("add")}
+          />
+          <Button
+            buttonName="Filter"
+            buttonClass="add-button"
+            handleClick={() => showPopUp("add")}
+          />
+        </div>
       </div>
     </div>
   );

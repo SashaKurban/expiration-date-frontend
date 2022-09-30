@@ -29,5 +29,11 @@ p {
 }
 
 header {
-  margin-bottom: 200px;
+  margin-bottom: 150px;
+}
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 36px;
+  }
 }

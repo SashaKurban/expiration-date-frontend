@@ -21,3 +21,16 @@
 .delete-button {
   width: 150px;
 }
+
+@media screen and (max-width: 650px) {
+  .submit-button {
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .update-button,
+  .delete-button {
+    width: 80px;
+  }
+}

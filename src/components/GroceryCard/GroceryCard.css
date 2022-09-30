@@ -41,7 +41,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 75%;
+    width: 80%;
   }
   .grocery-buttons {
     justify-content: center;
@@ -60,7 +60,6 @@
   .grocery-item {
     display: block;
     margin: 10px auto;
-    justify-content: center;
     padding: 10px;
   }
   .grocery-buttons {
@@ -69,11 +68,8 @@
     margin: 0;
     padding: 10px;
   }
-  .groecery-card {
-    width: 100%;
-  }
   .grocery-card-list {
     margin: 0 auto;
-    width: 85%;
+    width: 90%;
   }
 }
