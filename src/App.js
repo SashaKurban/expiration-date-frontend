@@ -106,23 +106,17 @@ function App() {
     daysToConsume,
     expirationDate
   ) {
-    const article = {
-      type: type,
-      name: name,
-      brand: brand,
-      dateOpened: dateOpened,
-      expirationDate: expirationDate,
-      daysToConsume: daysToConsume,
-    };
     setForm("close");
     setNoScroll(false);
     axios
       .put(
-        `https://expiration-date-project.herokuapp.com/api/expirationDate/${id}`,
-        article
+        expirationDate === "yyyy-mm-dd"
+          ? `https://expiration-date-project.herokuapp.com/api/expirationDate/${id}?name=${name}&type=${type}&brand=${brand}&dateOpened=${dateOpened}&daysToConsume=${daysToConsume}`
+          : `https://expiration-date-project.herokuapp.com/api/expirationDate/${id}?name=${name}&type=${type}&brand=${brand}&dateOpened=${dateOpened}&expirationDate=${expirationDate}`
       )
       .then(() => {
         setUpdate(!update);
+        console.log(form);
       })
       .catch((error) => {
         console.log(error);
